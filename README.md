@@ -3,6 +3,7 @@
 Modern, high-performance, full-stack international software and technology company website for **Areesh Technologies**.
 
 - **Company:** Areesh Technologies Ltd.
+- **Official Website:** [https://www.areeshtechnologies.com](https://www.areeshtechnologies.com)
 - **Chief Executive Officer:** Hafiz Haseeb Jamil
 - **Director:** Adnan Bhatti
 - **Design System:** Black (`#0A0A0A`), Charcoal (`#121212`), Crisp White (`#FFFFFF`), Precision Yellow Accent (`#F5C400`).
