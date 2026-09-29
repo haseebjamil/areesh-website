@@ -1,0 +1,78 @@
+// Prisma Schema for Areesh Technologies Full-Stack System
+// Configured for PostgreSQL production database
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  subject   String?
+  message   String
+  status    String   @default("NEW") // NEW, IN_REVIEW, RESPONDED, ARCHIVED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_messages")
+}
+
+model JobApplication {
+  id          String   @id @default(cuid())
+  jobId       String
+  name        String
+  email       String
+  phone       String?
+  resume      String   // Secure storage path or data reference
+  coverLetter String?
+  status      String   @default("SUBMITTED") // SUBMITTED, REVIEWING, SHORTLISTED, REJECTED, HIRED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([jobId])
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("job_applications")
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  status    String   @default("ACTIVE") // ACTIVE, UNSUBSCRIBED
+  createdAt DateTime @default(now())
+
+  @@index([status])
+  @@map("newsletter_subscribers")
+}
+
+model ProjectInquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  service   String
+  budget    String?
+  timeline  String?
+  message   String
+  status    String   @default("NEW") // NEW, QUALIFIED, PROPOSAL_SENT, CLOSED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([service])
+  @@index([status])
+  @@index([createdAt])
+  @@map("project_inquiries")
+}
